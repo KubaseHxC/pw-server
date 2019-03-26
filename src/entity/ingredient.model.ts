@@ -1,19 +1,22 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
-@Entity({name: 'PW_INGREDIENTS'})
+@Entity({ name: 'PW_INGREDIENTS' })
 export class Ingredient {
-    @PrimaryGeneratedColumn()
-    id: Number;
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @Column()
-    type: 'dough' | 'simple';
+  @Column()
+  type: 'dough' | 'simple';
 
-    @Column()
-    name: string;
+  @Column()
+  name: string;
 
-    @Column()
-    description: string;
+  @Column()
+  description: string;
 
-    @Column()
-    multiplicity: Number;
+  @Column()
+  price: number;
+
+  @Column()
+  multiplicity: number;
 }
