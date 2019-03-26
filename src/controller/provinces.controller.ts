@@ -17,4 +17,6 @@ const update = async (req: Request, res: Response, next: NextFunction) => {
     } catch (err) {
         res.status(500).send(err.message);
     }
-}
+};
+
+export { update };
