@@ -7,6 +7,7 @@ import { Ingredient } from '../entity/ingredient.model';
 import { Package } from '../entity/package.model';
 
 const calculate = async (req: Request, res: Response, next: NextFunction) => {
+  console.log(req.body);
   const pizzaPackage = req.body as Package;
   let countryTax, provinceTax, ingredientsAmount;
   try {
@@ -16,31 +17,35 @@ const calculate = async (req: Request, res: Response, next: NextFunction) => {
     ingredientsAmount = await calculateIngredientsBeforeTax(
       pizzaPackage.ingredients
     );
+    console.log('Ingredients amount before tax is ', ingredientsAmount);
   } catch (err) {
     console.log(err);
-    res.status(500).send(err.message);
+    res.sendStatus(500).send(err.message);
     return;
   }
 
   if (ingredientsAmount === 0) {
-    res.send(0);
+    res.send('0');
   }
 
-  const finalPrice =
+  const finalPrice: number =
     ingredientsAmount +
     (ingredientsAmount / 100) * countryTax +
     (ingredientsAmount / 100) * provinceTax;
 
-  res.send(finalPrice);
+  res.send(finalPrice.toString());
 };
 
 const getCountryTax = async (countryId: number): Promise<number> => {
   const countryRepository = getRepository(Country);
   try {
+    console.log('Looking for country with id ' + countryId);
     const country = await countryRepository.findOne(countryId);
     if (country) {
+      console.log('Country was found ', country);
       return country.tax;
     }
+    console.log('Country wasn`t found!');
     return null;
   } catch (err) {
     throw new Error(err);
@@ -50,10 +55,13 @@ const getCountryTax = async (countryId: number): Promise<number> => {
 const getProvinceTax = async (provinceId: number): Promise<number> => {
   const provinceRepository = getRepository(Province);
   try {
+    console.log('Looking for province with id ' + provinceId);
     const province = await provinceRepository.findOne(provinceId);
     if (province) {
+      console.log('Province was found ', province);
       return province.additionalTax || 0;
     }
+    console.log('Province wasn`t found!');
     return null;
   } catch (err) {
     throw new Error(err);
@@ -84,3 +92,5 @@ const calculateIngredientsBeforeTax = async (
     throw new Error(err);
   }
 };
+
+export { calculate };
