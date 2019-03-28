@@ -20,7 +20,7 @@ const calculate = async (req: Request, res: Response, next: NextFunction) => {
         console.log('Ingredients amount before tax is ', ingredientsAmount);
     } catch (err) {
         console.log(err);
-        res.status(500).send(err.message);
+        res.send(err.message);
         return;
     }
 

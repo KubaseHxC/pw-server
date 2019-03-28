@@ -7,9 +7,10 @@ const update = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const province = await repository.findOne(req.params.id);
         if (province) {
+            console.log(req.body);
             const additionalTax = (req.body as Province).additionalTax;
-            province.additionalTax = additionalTax;
-            const result = repository.save(province);
+            province.additionalTax = additionalTax === 0 ? null : additionalTax;
+            const result = await repository.save(province);
             res.send(result);
         } else {
             res.status(404).send();
