@@ -13,7 +13,7 @@
         "Access-Control-Allow-Headers": "X-Requested-With, Content-Type, Accept"
       },
       "src": "/.*",
-      "dest": "/index.ts"
+      "dest": "/src/index.ts"
     }
   ]
 }
