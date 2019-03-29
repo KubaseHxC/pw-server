@@ -1,10 +1,11 @@
-import { getRepository } from 'typeorm';
+import { getRepository, createConnection } from 'typeorm';
 import { Request, Response, NextFunction } from 'express';
 
 import { Country } from '../entity/country.model';
 import { Province } from '../entity/province.model';
 
 const all = async (req: Request, res: Response, next: NextFunction) => {
+  // const conn = await createConnection();
   const repository = getRepository(Country);
   const countries = await repository.find({ relations: ['provinces'] });
   res.send(countries);
