@@ -2,7 +2,7 @@
   "version": 2,
   "name": "pizza-builder-api",
   "builds": [
-    { "src": "**/*.ts", "use": "@now/node-server" }
+    { "src": "/index.ts", "use": "@now/node-server" }
 ],
   "routes": [
     {
