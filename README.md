@@ -1,7 +1,11 @@
-# Awesome Project Build with TypeORM
+# Pizza Builder Api
 
-Steps to run this project:
+Project developed by Iván Luis Sánchez
 
-1. Run `npm i` command
-2. Setup database settings inside `ormconfig.json` file
-3. Run `npm start` command
+Made with [Typescript](https://github.com/Microsoft/TypeScript) and [TypeORM](https://typeorm.io/#/) on [Express.js](https://expressjs.com/)
+
+To run this project locally run `npm install` and `npm run start`
+
+*(Don't touch database.sqlite pls)*
+
+<b>Enjoy building pizzas!!!</b>
