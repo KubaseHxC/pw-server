@@ -2,7 +2,7 @@
   "version": 2,
   "name": "pizza-builder-api",
   "builds": [
-    { "src": "./src/**/*.ts", "use": "@now/node@canary" }
+    { "src": "./src/index.ts", "use": "@now/node@canary" }
 ],
   "routes": [
     {
