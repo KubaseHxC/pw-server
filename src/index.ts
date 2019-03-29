@@ -19,8 +19,8 @@ createConnection()
     app.use(ProvincesRouter);
     app.use(PackageRouter);
 
-    app.listen(3001);
-
+    //app.listen(3001);
+    module.exports = app;
     console.log('Express server has started on port 3001.');
   })
   .catch(error => console.log(error));
