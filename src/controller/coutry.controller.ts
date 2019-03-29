@@ -5,8 +5,8 @@ import { Country } from '../entity/country.model';
 import { Province } from '../entity/province.model';
 
 const all = async (req: Request, res: Response, next: NextFunction) => {
-  const conn = await createConnection();
-  const repository = conn.getRepository(Country);
+  // const conn = await createConnection();
+  const repository = getRepository(Country);
   const countries = await repository.find({ relations: ['provinces'] });
   res.send(countries);
 };
