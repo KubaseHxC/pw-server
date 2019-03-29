@@ -7,8 +7,8 @@ import { CountryController } from './routes/country.routes';
 import { ProvincesRouter } from './routes/provinces.router';
 import { PackageRouter } from './routes/package.routes';
 
-createConnection()
-  .then(async connection => {
+//createConnection()
+//  .then(connection => {
     const app = express();
 
     app.use(bodyParser.json());
@@ -19,8 +19,8 @@ createConnection()
     app.use(ProvincesRouter);
     app.use(PackageRouter);
 
-    app.listen(3001);
-
+    //app.listen(3001);
+    module.exports = app;
     console.log('Express server has started on port 3001.');
-  })
-  .catch(error => console.log(error));
+  //})
+  //.catch(error => console.log(error));
